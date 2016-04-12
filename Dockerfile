@@ -6,10 +6,7 @@ ENV SWIFT_PLATFORM ubuntu15.10
 
 # Install Dependencies
 RUN apt-get update && \
-	apt-get install -y man-db \
-	  manpages \
-	  manpages-dev \
-	  clang \
+	apt-get install -y clang \
 	  libicu55 \
 	  libpython2.7 \
 	  wget
@@ -27,17 +24,16 @@ RUN SWIFT_ARCHIVE_NAME=swift-$SWIFT_VERSION-$SWIFT_PLATFORM && \
     rm -rf $SWIFT_ARCHIVE_NAME* /tmp/* /var/tmp/*
 
 RUN apt-get update && \
-	apt-get install -y libncurses5-dev \
-	  ncurses-doc \
-	  emacs \
+	apt-get install -y emacs \
 	  nano \
-	  openssh-server
-	#apt-get clean && \
-	#rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+	  openssh-server && \
+	apt-get clean && \
+	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 #Building a webserver? Expose Port 80 by uncommenting the following.
-#Expose 80
+Expose 80
 Expose 22
+Expose 443
 #Copy our sample swift program into the Docker image
 COPY samples/  /tmp/
 #Copy emacs configs
