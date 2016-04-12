@@ -5,3 +5,6 @@ services:
 
 before_install:
     - docker build -t aarocka/gurps-server .
+
+script:
+    - echo "IT WORKS GOD DAMNIT!"
