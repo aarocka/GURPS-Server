@@ -6,5 +6,4 @@ services:
   - docker
 
 before_install:
-    - docker build -t aarocka/gurps-server
-    
+    - docker build -t aarocka/gurps-server .
