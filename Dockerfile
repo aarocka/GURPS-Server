@@ -5,7 +5,7 @@ RUN apt-get update && \
 		libsqlite3-dev \
 		libcurl4-openssl-dev \
 		libicu-dev \
-		uuid-dev \
+		uuid-dev && \
 		apt-get clean && \
 		rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
