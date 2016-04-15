@@ -8,4 +8,4 @@ before_install:
     - docker build -t aarocka/gurps-server .
 
 script:
-    - docker run aarocka/gurps-server -c "swift /tmp/helloworld.swift"
+    - docker run aarocka/gurps-server /bin/sh -c "swift /tmp/helloworld.swift"
