@@ -6,6 +6,7 @@ services:
 before_install:
     - docker pull aarocka/swift-sandbox:slim
     - docker build -t aarocka/gurps-server .
+    - docker run aarocka/gurps-server -c "swift /tmp/helloworld.swift"
 
 script:
-    - docker run aarocka/gurps-server -c swift
+    - docker run aarocka/gurps-server -c "swift /tmp/helloworld.swift"
