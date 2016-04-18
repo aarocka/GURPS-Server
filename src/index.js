@@ -18,7 +18,7 @@ io.on('connection', function(socket){
   });
 
   socket.on(123456, function(data){
-    console.log('Game 123456: Player ' + data);
+    console.log('Game 123456: Player: ' + data.playerNumber);
   });
 
   socket.on(214358, function(data){
