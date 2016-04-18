@@ -19,7 +19,7 @@ io.on('connection', function(socket){
 
   socket.on(123456, function(data){
     console.log('Game 123456: Player: ' + data.playerNumber + ' GameState: ' + data.playerState);
-    io.emit(123456, "Server received a message");
+    io.emit(123456, "Player"+data.playerNumber + " says:" + data.playerState);
   });
 
   socket.on(214358, function(data){
