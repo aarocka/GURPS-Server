@@ -30,10 +30,6 @@ io.on('connection', function(socket){
     console.log('Game 123456: Player ' + data);
   });
 
-  socket.on('Send message', function(data){
-    io.sockets.emit('new message', {msg:data});
-  });
-
 });
 
 http.listen(3000, function(){
