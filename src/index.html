@@ -169,8 +169,10 @@
         });
 
         $("#p4Update").click(function(){
-            playerData.playerState = $('#p4State').val();
-            socket.emit(playerData.gameNumber, playerData.playerState);
+            if(playerData.playerNumber ==4) {
+                playerData.playerState = $('#p4State').val();
+                socket.emit(playerData.gameNumber, playerData.playerState);
+            }else {}
         });
 
 
