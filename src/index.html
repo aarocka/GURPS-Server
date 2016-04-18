@@ -115,6 +115,8 @@
             playerState:""
         };
 
+        var hackyGlobalVar = 2149999999;
+
         $("#game123456").click(function(){
             playerData.gameNumber = 123456;
         });
@@ -143,6 +145,7 @@
             } else {
                 $("#GameID").text("Game:"+playerData.gameNumber);
                 socket.emit(playerData.gameNumber, playerData);
+                hackyGlobalVar = playerData.gameNumber;
                 switch (playerData.playerNumber){
                     case 1:
                         $("#p1Update").attr("class", "btn btn-danger");
@@ -189,10 +192,21 @@
             }else {}
         });
 
-        socket.on(123456,function(msg){
-            console.log(msg);
+        socket.on(123456, function(msg){
+            if (playerData.gameNumber == 123456){
+                console.log(msg);
+            }
         });
-
+        socket.on(214358, function(msg){
+            if (playerData.gameNumber == 214358){
+                console.log(msg);
+            }
+        });
+        socket.on(234567, function(msg){
+            if (playerData.gameNumber == 2345678){
+                console.log(msg);
+            }
+        });
 
     </script>
 </body>
