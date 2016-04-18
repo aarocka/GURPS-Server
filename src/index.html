@@ -37,7 +37,7 @@
 
 
         <div class="row">
-            <h1>Game:123456</h1>
+            <h1 id="GameID">Game:</h1>
 
             <div class="col-md-3">
                 <div class="panel panel-default">
@@ -49,7 +49,7 @@
                             <span class="input-group-btn">
                                 <button class="btn btn-danger" type="button" id="p1Update">Go!</button>
                             </span>
-                            <input type="text" class="form-control" placeholder="Player State" aria-describedby="sizing-addon1">
+                            <input type="text" class="form-control" placeholder="Player State" aria-describedby="sizing-addon1" id="p1State">
                         </div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="button" id="p2Update">Go!</button>
                             </span>
-                            <input type="text" class="form-control" placeholder="Player State" aria-describedby="sizing-addon1">
+                            <input type="text" class="form-control" placeholder="Player State" aria-describedby="sizing-addon1" id="p2State">
                         </div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="button" id="p3Update">Go!</button>
                             </span>
-                            <input type="text" class="form-control" placeholder="Player State" aria-describedby="sizing-addon1">
+                            <input type="text" class="form-control" placeholder="Player State" aria-describedby="sizing-addon1" id="p3State">
                         </div>
                     </div>
                 </div>
@@ -97,145 +97,7 @@
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="button" id="p4Update">Go!</button>
                             </span>
-                            <input type="text" class="form-control" placeholder="Player State" aria-describedby="sizing-addon1">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="row">
-            <h1>Game:214358</h1>
-
-            <div class="col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Player 1</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="input-group input-group-lg">
-                            <span class="input-group-btn">
-                                <button class="btn btn-danger" type="button">Go!</button>
-                            </span>
-                            <input type="text" class="form-control" placeholder="Player State" aria-describedby="sizing-addon1">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Player 2</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="input-group input-group-lg">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">Go!</button>
-                            </span>
-                            <input type="text" class="form-control" placeholder="Player State" aria-describedby="sizing-addon1">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Player 3</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="input-group input-group-lg">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">Go!</button>
-                            </span>
-                            <input type="text" class="form-control" placeholder="Player State" aria-describedby="sizing-addon1">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Player 4</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="input-group input-group-lg">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">Go!</button>
-                            </span>
-                            <input type="text" class="form-control" placeholder="Player State" aria-describedby="sizing-addon1">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="row">
-            <h1>Game:234567</h1>
-
-            <div class="col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Player 1</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="input-group input-group-lg">
-                            <span class="input-group-btn">
-                                <button class="btn btn-danger" type="button">Go!</button>
-                            </span>
-                            <input type="text" class="form-control" placeholder="Player State" aria-describedby="sizing-addon1">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Player 2</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="input-group input-group-lg">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">Go!</button>
-                            </span>
-                            <input type="text" class="form-control" placeholder="Player State" aria-describedby="sizing-addon1">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Player 3</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="input-group input-group-lg">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">Go!</button>
-                            </span>
-                            <input type="text" class="form-control" placeholder="Player State" aria-describedby="sizing-addon1">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Player 4</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="input-group input-group-lg">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">Go!</button>
-                            </span>
-                            <input type="text" class="form-control" placeholder="Player State" aria-describedby="sizing-addon1">
+                            <input type="text" class="form-control" placeholder="Player State" id="p4State" aria-describedby="sizing-addon1">
                         </div>
                     </div>
                 </div>
@@ -279,14 +141,36 @@
             if (playerData.gameNumber == 0 && playerData.playerNumber == 0){
                 alert("select a game and player");
             } else {
-                //alert("connecting");
-
+                $("#GameID").text("Game:"+playerData.gameNumber);
                 socket.emit(playerData.gameNumber, playerData);
             }
         });
 
+
         $("#p1Update").click(function(){
-            socket.emit(playerData.gameNumber, playerData);
+            if(playerData.playerNumber ==1) {
+                playerData.playerState = $('#p1State').val();
+                socket.emit(playerData.gameNumber, playerData.playerState);
+            }else {}
+        });
+
+        $("#p2Update").click(function(){
+            if(playerData.playerNumber ==2) {
+                playerData.playerState = $('#p2State').val();
+                socket.emit(playerData.gameNumber, playerData.playerState);
+            }else {}
+        });
+
+        $("#p3Update").click(function(){
+            if(playerData.playerNumber ==3) {
+                playerData.playerState = $('#p3State').val();
+                socket.emit(playerData.gameNumber, playerData.playerState);
+            }else {}
+        });
+
+        $("#p4Update").click(function(){
+            playerData.playerState = $('#p4State').val();
+            socket.emit(playerData.gameNumber, playerData.playerState);
         });
 
 
