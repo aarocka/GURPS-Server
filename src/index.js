@@ -17,18 +17,20 @@ io.on('connection', function(socket){
     console.log('Connected:' + connections.length + ' users connected');
   });
 
-  socket.on('Send message', function(data){
-    io.sockets.emit('new message', {msg:data});
-  });
-
   socket.on(123456, function(data){
     console.log('Game 123456: Player ' + data);
   });
+
   socket.on(214358, function(data){
     console.log('Game 123456: Player ' + data);
   });
+
   socket.on(234567, function(data){
     console.log('Game 123456: Player ' + data);
+  });
+
+  socket.on('Send message', function(data){
+    io.sockets.emit('new message', {msg:data});
   });
 
 });
