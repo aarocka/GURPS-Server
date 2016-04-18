@@ -47,7 +47,7 @@
                     <div class="panel-body">
                         <div class="input-group input-group-lg">
                             <span class="input-group-btn">
-                                <button class="btn btn-danger" type="button" id="p1Update">Go!</button>
+                                <button class="btn btn-default" type="button" id="p1Update">Go!</button>
                             </span>
                             <input type="text" class="form-control" placeholder="Player State" aria-describedby="sizing-addon1" id="p1State">
                         </div>
@@ -143,6 +143,20 @@
             } else {
                 $("#GameID").text("Game:"+playerData.gameNumber);
                 socket.emit(playerData.gameNumber, playerData);
+                switch (playerData.playerNumber){
+                    case 1:
+                        $("#p1Update").attr("class", "btn btn-danger");
+                        break;
+                    case 2:
+                        $("#p2Update").attr("class", "btn btn-danger");
+                        break;
+                    case 3:
+                        $("#p3Update").attr("class", "btn btn-danger");
+                        break;
+                    case 4:
+                        $("#p4Update").attr("class", "btn btn-danger");
+                        break;
+                }
             }
         });
 
