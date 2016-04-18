@@ -214,11 +214,39 @@
         socket.on(214358, function(msg){
             if (playerData.gameNumber == 214358){
                 console.log(msg);
+                switch (msg.playerNumber){
+                    case 1:
+                        $("#p1State").val(msg.playerState);
+                        break;
+                    case 2:
+                        $("#p2State").val(msg.playerState);
+                        break;
+                    case 3:
+                        $("#p3State").val(msg.playerState);
+                        break;
+                    case 4:
+                        $("#p4State").val(msg.playerState);
+                        break;
+                }
             }
         });
         socket.on(234567, function(msg){
             if (playerData.gameNumber == 2345678){
                 console.log(msg);
+                switch (msg.playerNumber){
+                    case 1:
+                        $("#p1State").val(msg.playerState);
+                        break;
+                    case 2:
+                        $("#p2State").val(msg.playerState);
+                        break;
+                    case 3:
+                        $("#p3State").val(msg.playerState);
+                        break;
+                    case 4:
+                        $("#p4State").val(msg.playerState);
+                        break;
+                }
             }
         });
 
