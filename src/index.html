@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -16,7 +17,96 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <h1>Game 1</h1>
+            <h1>Game Simulator</h1>
+
+
+            <button class="btn btn-danger" id="game123456" type="button">Game 123456</button>
+            <button class="btn btn-danger" id="game214358" type="button">Game 214358</button>
+            <button class="btn btn-danger" id="game234567" type="button">Game 234567</button>
+
+            <button class="btn btn-danger" id="player1" type="button">Player 1</button>
+            <button class="btn btn-danger" id="player2" type="button">Player 2</button>
+            <button class="btn btn-danger" id="player3" type="button">Player 3</button>
+            <button class="btn btn-danger" id="player4" type="button">Player 4</button>
+
+            <button class="btn btn-danger" id="connect" type="button">Connect</button>
+
+        </div>
+
+
+
+
+        <div class="row">
+            <h1>Game:123456</h1>
+
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Player 1</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-btn">
+                                <button class="btn btn-danger" type="button" id="p1Update">Go!</button>
+                            </span>
+                            <input type="text" class="form-control" placeholder="Player State" aria-describedby="sizing-addon1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Player 2</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" id="p2Update">Go!</button>
+                            </span>
+                            <input type="text" class="form-control" placeholder="Player State" aria-describedby="sizing-addon1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Player 3</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" id="p3Update">Go!</button>
+                            </span>
+                            <input type="text" class="form-control" placeholder="Player State" aria-describedby="sizing-addon1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Player 4</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" id="p4Update">Go!</button>
+                            </span>
+                            <input type="text" class="form-control" placeholder="Player State" aria-describedby="sizing-addon1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <h1>Game:214358</h1>
 
             <div class="col-md-3">
                 <div class="panel panel-default">
@@ -85,7 +175,7 @@
         </div>
 
         <div class="row">
-            <h1>Game 2</h1>
+            <h1>Game:234567</h1>
 
             <div class="col-md-3">
                 <div class="panel panel-default">
@@ -153,5 +243,53 @@
 
         </div>
     </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        var playerData = {
+            gameNumber:0,
+            playerNumber:0,
+            playerState:""
+        };
+
+        $("#game123456").click(function(){
+            playerData.gameNumber = 123456;
+        });
+        $("#game214358").click(function(){
+            playerData.gameNumber = 214358;
+        });
+        $("#game234567").click(function(){
+            playerData.gameNumber = 234567;
+        });
+        $("#player1").click(function(){
+            playerData.playerNumber = 1;
+        });
+        $("#player2").click(function(){
+            playerData.playerNumber = 2;
+        });
+        $("#player3").click(function(){
+            playerData.playerNumber = 3;
+        });
+        $("#player4").click(function(){
+            playerData.playerNumber = 4;
+        });
+
+        $("#connect").click(function(){
+            if (playerData.gameNumber == 0 && playerData.playerNumber == 0){
+                alert("select a game and player");
+            } else {
+                //alert("connecting");
+
+                socket.emit(playerData.gameNumber, playerData);
+            }
+        });
+
+        $("#p1Update").click(function(){
+            socket.emit(playerData.gameNumber, playerData);
+        });
+
+
+    </script>
 </body>
 </html>
