@@ -195,6 +195,20 @@
         socket.on(123456, function(msg){
             if (playerData.gameNumber == 123456){
                 console.log(msg);
+                switch (msg.playerNumber){
+                    case 1:
+                        $("#p1State").val(msg.playerState);
+                        break;
+                    case 2:
+                        $("#p2State").val(msg.playerState);
+                        break;
+                    case 3:
+                        $("#p3State").val(msg.playerState);
+                        break;
+                    case 4:
+                        $("#p4State").val(msg.playerState);
+                        break;
+                }
             }
         });
         socket.on(214358, function(msg){
