@@ -164,28 +164,28 @@
         $("#p1Update").click(function(){
             if(playerData.playerNumber ==1) {
                 playerData.playerState = $('#p1State').val();
-                socket.emit(playerData.gameNumber, playerData.playerState);
+                socket.emit(playerData.gameNumber, playerData);
             }else {}
         });
 
         $("#p2Update").click(function(){
             if(playerData.playerNumber ==2) {
                 playerData.playerState = $('#p2State').val();
-                socket.emit(playerData.gameNumber, playerData.playerState);
+                socket.emit(playerData.gameNumber, playerData);
             }else {}
         });
 
         $("#p3Update").click(function(){
             if(playerData.playerNumber ==3) {
                 playerData.playerState = $('#p3State').val();
-                socket.emit(playerData.gameNumber, playerData.playerState);
+                socket.emit(playerData.gameNumber, playerData);
             }else {}
         });
 
         $("#p4Update").click(function(){
             if(playerData.playerNumber ==4) {
                 playerData.playerState = $('#p4State').val();
-                socket.emit(playerData.gameNumber, playerData.playerState);
+                socket.emit(playerData.gameNumber, playerData);
             }else {}
         });
 
