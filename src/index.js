@@ -24,10 +24,12 @@ io.on('connection', function(socket){
 
   socket.on(214358, function(data){
     console.log('Game 123456: Player ' + data);
+    io.emit(214358, data);
   });
 
   socket.on(234567, function(data){
     console.log('Game 123456: Player ' + data);
+    io.emit(234567, data);
   });
 
 });
