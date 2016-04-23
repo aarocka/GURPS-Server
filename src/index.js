@@ -1,11 +1,20 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var mongodb = require('mongodb');
 users =[];
 connections =[];
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/createRoom'function (req, res) {
+  //TODO Create new table to track room stats
+});
+
+app.get('/createRoom'function (req, res) {
+  //TODO Destroy table to track room stats
 });
 
 io.on('connection', function(socket){
