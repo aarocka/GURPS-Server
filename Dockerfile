@@ -1,15 +1,9 @@
-FROM aarocka/swift-sandbox:slim
-RUN apt-get update && \
-	apt-get install -y libssl-dev \
-		libevent-dev \
-		libsqlite3-dev \
-		libcurl4-openssl-dev \
-		libicu-dev \
-		uuid-dev && \
-		apt-get clean && \
-		rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
+FROM node
+RUN mkdir -p /usr/src/app
+WORKDIR /urs/src/app
+COPY src/ /usr/src/app/
+RUN npm install
 EXPOSE 80
 EXPOSE 22
 EXPOSE 443
-COPY samples/  /tmp/
+EXPOSE 8000
