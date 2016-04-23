@@ -9,11 +9,11 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
-app.get('/createRoom'function (req, res) {
+app.get('/createRoom', function (req, res) {
   //TODO Create new table to track room stats
 });
 
-app.get('/createRoom'function (req, res) {
+app.get('/destroyRoom', function (req, res) {
   //TODO Destroy table to track room stats
 });
 
