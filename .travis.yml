@@ -4,7 +4,7 @@ services:
 before_install:
 - docker build -t aarocka/gurps-server .
 script:
-- docker run -t -e "HTTP_PORT=3000" aarocka/gurps-server
+- docker run -t -e "HTTP_PORT=3000" -e "RUN_MODE=test" aarocka/gurps-server
 notifications:
   slack:
     secure: agBBee2twJ/PoDCXs+sDYl549cbB1jp7yYRv1Kxeg+SAeCCAf/1Gs+NdCQ73aRdPSqaN2muHd9LIIcejL+oFvgJB2DKLvCIcWsy+VSYCeTyJO3ZfiYdI+POL6T72fhSTcnRRwNvysOiuMUyYrJpD973bsjAGxyAew0gGM/JBRJkI6FxuBNJci5lCWLtZTLBKMipoBea9ZEmcEOIOVkMDpgJKeVwpHad5if4e47Tur+qCR3dOM+Ifu4KK/Dpm8wlCjbxN8LMmyTRaU8VQbkiq5twrjPnMUDBEAAgRe7p6sHMMwsH05lJzYLInHRtnixQwq3mOJjQO/a/b/mFMV3P0fTxp9mPwncqjejXOaGkmUeVNROs1PjOpOWsT22lr03va9+BJZbxQ3UzZKcRQNp+r1yduyn6MsekvPhqnw/Bp8XgniQm3UabXi51jwnWoHMa5Rf84kA/6OQmzDcJ9uPpuQNf2KaPFPp9jWxz7KpOo56tW8wc0xixalaU81ZqK2pZITpoD4EEw+OLu3o1uPouYw2eMPB6VJWTfmGYKLfeSM5URX6lisp2MNG3F2MVTJABwexoOe6xEAI59TrxHy9vqIoO7oCXkS68RaLyw1gZ1gwicQIGxRCA2i4n61WvAO+cHR0QWMAOOhWL/MDp4d+T1c2YzhSP+kRB/99iybPJGu9I=
