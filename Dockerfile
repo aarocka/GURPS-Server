@@ -9,4 +9,4 @@ EXPOSE 80
 EXPOSE 22
 EXPOSE 443
 EXPOSE 8000
-CMD ["npm", "start"]
+CMD ["npm", "test"]
