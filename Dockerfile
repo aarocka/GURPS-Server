@@ -4,6 +4,7 @@ WORKDIR /usr/src/app/
 COPY package.json /usr/src/app/
 COPY src/ /usr/src/app/
 RUN npm install
+ENV HTTP_PORT
 EXPOSE 80
 EXPOSE 22
 EXPOSE 443
