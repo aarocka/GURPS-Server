@@ -1,0 +1,41 @@
+{
+  "gameID": 123456,
+  "playerData":{
+    "player1":{
+      "uid":8675309,
+      "nicname":"scrumlord",
+      "IP":"10.13.37.1"
+    },
+    "player2":{
+      "uid":8675309,
+      "nicname":"scrumlord",
+      "IP":"10.13.37.1"
+    },
+    "player3":{
+      "uid":8675309,
+      "nicname":"scrumlord",
+      "IP":"10.13.37.1"
+    }
+  },
+  "turn":1,
+  "playerState":{
+    "player1":{
+      "posX":10,
+      "posY":21,
+      "health":25,
+      "mana":25
+    },
+    "player2":{
+      "posX":10,
+      "posY":21,
+      "health":25,
+      "mana":25
+    },
+    "player3":{
+      "posX":10,
+      "posY":21,
+      "health":25,
+      "mana":25
+    }
+  }
+}
