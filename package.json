@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start":"node src/index.js",
-    "test": "node src/sanity.js&& exit 1"
+    "test": "node src/sanity.js&& exit 0"
   },
   "author": "Aaron Kolker",
   "license": "ISC",
