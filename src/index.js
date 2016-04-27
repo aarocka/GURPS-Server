@@ -9,6 +9,7 @@ var GameInfo = {
   "players" :[]
 }
 var blankPlayer = {
+  "uid":"",
   "playerNumber":0,
 	"nicname":"",
   "posX":0,
@@ -38,7 +39,7 @@ io.on('connection', function(socket){
     //Create player based on nicname provided
     var tempPlayer = blankPlayer;
     tempPlayer.nicname = msg;
-
+    tempPlayer.uid = socket.id;
     //assign player number
     if (GameInfo.players.length == 0) {
       tempPlayer.playerNumber=1
@@ -75,13 +76,6 @@ io.on('connection', function(socket){
     console.log(socket.id);
     //return the created tempPlayer object back to the player
     io.to(socket.id).emit('playerJoined', tempPlayer);
-  });
-
-
-
-  socket.on(123456, function(data){
-    console.log('Game 123456: Player: ' + data.playerNumber + ' GameState: ' + data.playerState);
-    io.emit(123456, data);
   });
 
 });
