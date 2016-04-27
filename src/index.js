@@ -87,7 +87,11 @@ io.on('connection', function(socket){
   });
 
   socket.on('playerUpdate', function(msg){
-
+    if (GameInfo.gameStart == true && GameInfo.turn == msg.playerNumber) {
+      //assign new player state
+      GameInfo.players[GameInfo.turn-1]=msg;
+      //increment turn count
+    }
   });
 
 });
