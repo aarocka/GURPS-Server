@@ -82,7 +82,6 @@ io.on('connection', function(socket){
 
   socket.on('startGame',function(msg){
     console.log("The game is starting");
-
     console.log("It is player "+ GameInfo.turn + "turn");
     GameInfo.gameStart = true;
   });
@@ -93,7 +92,7 @@ io.on('connection', function(socket){
       GameInfo.players[GameInfo.turn-1]=msg;
       //increment turn count
       GameInfo.turn++;
-      if (GameInfo.turn < GameInfo.players.length) {
+      if (GameInfo.turn > GameInfo.players.length) {
         GameInfo.turn = 1;
       }
       console.log("It is player "+ GameInfo.turn + "turn");
