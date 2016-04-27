@@ -32,10 +32,12 @@ io.on('connection', function(socket){
     connections.splice(connections.indexOf(socket), 1);
     console.log('Connected:' + connections.length + ' users connected');
   });
-  socket.on('join',function(data){
+
+  //player join logic
+  socket.on('join',function(msg){
     //Create player based on nicname provided
     var tempPlayer = blankPlayer;
-    tempPlayer.nicname = data;
+    tempPlayer.nicname = msg;
 
     //assign player number
     if (GameInfo.players.length == 0) {
@@ -68,7 +70,14 @@ io.on('connection', function(socket){
         break;
     }
     GameInfo.players.push(tempPlayer);
+    console.log(GameInfo.players.length);
+    console.log(msg);
+    console.log(socket.id);
+    //return the created tempPlayer object back to the player
+    io.to(socket.id).emit('playerJoined', tempPlayer);
   });
+
+
 
   socket.on(123456, function(data){
     console.log('Game 123456: Player: ' + data.playerNumber + ' GameState: ' + data.playerState);
