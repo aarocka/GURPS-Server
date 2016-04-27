@@ -6,6 +6,7 @@ connections =[];
 var GameInfo = {
   "gameID": process.env.GAMEID || 123456,
   "turn":1,
+  "gameStart":false,
   "players" :[]
 }
 var blankPlayer = {
@@ -36,7 +37,7 @@ io.on('connection', function(socket){
 
   //player join logic
   socket.on('join',function(msg){
-    //Create player based on nicname provided
+    //Create player based on nicname provided and their socket id
     var tempPlayer = blankPlayer;
     tempPlayer.nicname = msg;
     tempPlayer.uid = socket.id;
@@ -78,7 +79,19 @@ io.on('connection', function(socket){
     io.to(socket.id).emit('playerJoined', tempPlayer);
   });
 
+
+  socket.on('startGame',function(msg){
+    console.log("The game is starting");
+    console.log("It is player "+ GameInfo.turn + "turn");
+  });
+
+  socket.on('playerUpdate', function(msg){
+
+  });
+
 });
+
+
 
 http.listen(port, function(){
   console.log('listening on *:3000');
