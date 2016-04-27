@@ -84,6 +84,7 @@ io.on('connection', function(socket){
     console.log("The game is starting");
     console.log("It is player "+ GameInfo.turn + "turn");
     GameInfo.gameStart = true;
+    io.emit('gameStart','The game has started');
   });
 
   socket.on('playerUpdate', function(msg){
@@ -96,6 +97,7 @@ io.on('connection', function(socket){
         GameInfo.turn = 1;
       }
       console.log("It is player "+ GameInfo.turn + "turn");
+      io.emit('turnEnded', GameInfo);
     }
   });
 
