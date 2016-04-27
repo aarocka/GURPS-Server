@@ -83,6 +83,7 @@ io.on('connection', function(socket){
   socket.on('startGame',function(msg){
     console.log("The game is starting");
     console.log("It is player "+ GameInfo.turn + "turn");
+    GameInfo.gameStart = true;
   });
 
   socket.on('playerUpdate', function(msg){
