@@ -115,6 +115,8 @@
             playerState:""
         };
 
+        var dataPlayer = {};
+
         var hackyGlobalVar = 2149999999;
 
         $("#game123456").click(function(){
@@ -250,6 +252,10 @@
             }
         });
 
+        socket.on('playerJoined', function (msg) {
+          console.log(msg);
+          dataPlayer = msg;
+        });
 
     </script>
 </body>

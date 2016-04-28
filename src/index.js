@@ -1,20 +1,29 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var mongodb = require('mongodb');
 users =[];
 connections =[];
+var GameInfo = {
+  "gameID": process.env.GAMEID || 123456,
+  "turn":1,
+  "gameStart":false,
+  "players" :[]
+}
+var blankPlayer = {
+  "uid":"",
+  "playerNumber":0,
+	"nicname":"",
+  "posX":0,
+  "posY":0,
+  "maxHealth":100,
+  "health":100
+};
+var port = process.env.HTTP_PORT || 3000;
+
+
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
-});
-
-app.get('/createRoom', function (req, res) {
-  //TODO Create new table to track room stats
-});
-
-app.get('/destroyRoom', function (req, res) {
-  //TODO Destroy table to track room stats
 });
 
 io.on('connection', function(socket){
@@ -26,23 +35,76 @@ io.on('connection', function(socket){
     console.log('Connected:' + connections.length + ' users connected');
   });
 
-  socket.on(123456, function(data){
-    console.log('Game 123456: Player: ' + data.playerNumber + ' GameState: ' + data.playerState);
-    io.emit(123456, data);
+  //player join logic
+  socket.on('join',function(msg){
+    //Create player based on nicname provided and their socket id
+    var tempPlayer = blankPlayer;
+    tempPlayer.nicname = msg;
+    tempPlayer.uid = socket.id;
+    //assign player number
+    if (GameInfo.players.length == 0) {
+      tempPlayer.playerNumber=1
+    } else {
+      tempPlayer.playerNumber = GameInfo.players.length + 1;
+    }
+
+    //set player position based on player number
+    switch (tempPlayer.playerNumber) {
+      case 1:
+        tempPlayer.posY = 0;
+        tempPlayer.posX = 0;
+        break;
+      case 2:
+        tempPlayer.posY = 20;
+        tempPlayer.posX = 20;
+        break;
+      case 3:
+        tempPlayer.posY = 20;
+        tempPlayer.posX = 0;
+        break;
+      case 4:
+        tempPlayer.posY = 0;
+        tempPlayer.posX = 20;
+        break;
+      default:
+        tempPlayer.posY = 0;
+        tempPlayer.posX = 0;
+        break;
+    }
+    GameInfo.players.push(tempPlayer);
+    console.log(GameInfo.players.length);
+    console.log(msg);
+    console.log(socket.id);
+    //return the created tempPlayer object back to the player
+    io.to(socket.id).emit('playerJoined', tempPlayer);
   });
 
-  socket.on(214358, function(data){
-    console.log('Game 123456: Player ' + data);
-    io.emit(214358, data);
+
+  socket.on('startGame',function(msg){
+    console.log("The game is starting");
+    console.log("It is player "+ GameInfo.turn + "turn");
+    GameInfo.gameStart = true;
+    io.emit('gameStart',GameInfo);
   });
 
-  socket.on(234567, function(data){
-    console.log('Game 123456: Player ' + data);
-    io.emit(234567, data);
+  socket.on('playerUpdate', function(msg){
+    if (GameInfo.gameStart == true && GameInfo.turn == msg.playerNumber) {
+      //assign new player state
+      GameInfo.players[GameInfo.turn-1]=msg;
+      //increment turn count
+      GameInfo.turn++;
+      if (GameInfo.turn > GameInfo.players.length) {
+        GameInfo.turn = 1;
+      }
+      console.log("It is player "+ GameInfo.turn + "turn");
+      io.emit('turnEnded', GameInfo);
+    }
   });
 
 });
 
-http.listen(3000, function(){
+
+
+http.listen(port, function(){
   console.log('listening on *:3000');
 });
