@@ -43,7 +43,7 @@ io.on('connection', function(socket){
   //player join logic
   socket.on('join',function(msg){
     //Create player based on nicname provided and their socket id
-    var tempPlayer = blankPlayer;
+    var tempPlayer = JSON.parse(JSON.stringify(blankPlayer));
     tempPlayer.nicname = msg;
     tempPlayer.uid = socket.id;
     //assign player number
