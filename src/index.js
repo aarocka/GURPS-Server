@@ -1,6 +1,10 @@
 var app = require('express')();
 var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var io = require('socket.io')({
+	transports: ['websocket'],
+});
+
+
 users =[];
 connections =[];
 var GameInfo = {
@@ -18,13 +22,14 @@ var blankPlayer = {
   "maxHealth":100,
   "health":100
 };
-var port = process.env.HTTP_PORT || 3000;
+var port = process.env.WS_PORT || 3000;
+io.attach(port);
 
-
-
+/*
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
+*/
 
 io.on('connection', function(socket){
   connections.push(socket);
@@ -55,16 +60,16 @@ io.on('connection', function(socket){
         tempPlayer.posX = 0;
         break;
       case 2:
-        tempPlayer.posY = 20;
-        tempPlayer.posX = 20;
+        tempPlayer.posY = 0;
+        tempPlayer.posX = 17.64;
         break;
       case 3:
-        tempPlayer.posY = 20;
-        tempPlayer.posX = 0;
+        tempPlayer.posY = 15.28;
+        tempPlayer.posX = 17.64;
         break;
       case 4:
-        tempPlayer.posY = 0;
-        tempPlayer.posX = 20;
+        tempPlayer.posY = 15.28;
+        tempPlayer.posX = 0;
         break;
       default:
         tempPlayer.posY = 0;
@@ -80,17 +85,18 @@ io.on('connection', function(socket){
   });
 
 
-  socket.on('startGame',function(msg){
+  socket.on('start',function(msg){
     console.log("The game is starting");
     console.log("It is player "+ GameInfo.turn + "turn");
     GameInfo.gameStart = true;
-    io.emit('gameStart',GameInfo);
+    io.emit('gameStarted',GameInfo);
   });
 
   socket.on('playerUpdate', function(msg){
     if (GameInfo.gameStart == true && GameInfo.turn == msg.playerNumber) {
       //assign new player state
       GameInfo.players[GameInfo.turn-1]=msg;
+      console.log(GameInfo.players[GameInfo.turn-1]);
       //increment turn count
       GameInfo.turn++;
       if (GameInfo.turn > GameInfo.players.length) {
@@ -103,8 +109,8 @@ io.on('connection', function(socket){
 
 });
 
-
-
+/*
 http.listen(port, function(){
   console.log('listening on *:3000');
 });
+*/
